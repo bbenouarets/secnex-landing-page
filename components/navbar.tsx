@@ -34,7 +34,7 @@ export const Navbar = () => {
 					<div className="flex items-center justify-between w-full">
 						<div className="flex-shrink-0">
 							<Link
-								href="#"
+								href="/"
 								className="flex items-center"
 							>
 								<Shield className="h-8 w-8 text-purple-500" />
