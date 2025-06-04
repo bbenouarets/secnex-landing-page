@@ -1,9 +1,10 @@
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import BlogPostClient from "../../../components/client";
+import { GetBlogPost } from "@/components/server/blog";
 import { redirect } from "next/navigation";
 
-type BlogPost = {
+export type BlogPost = {
 	id: string;
 	title: string;
 	excerpt: string;
@@ -12,10 +13,13 @@ type BlogPost = {
 	author: string;
 };
 
-const examplePosts: BlogPost[] = [];
-
-export default function BlogPost({ params }: { params: { id: string } }) {
-	const post = examplePosts.find((p) => p.id === params.id);
+export default async function BlogPost({
+	params,
+}: {
+	params: Promise<{ id: string }>;
+}) {
+	const { id } = await params;
+	const post = await GetBlogPost(id);
 
 	if (!post) {
 		return redirect("/blog");
