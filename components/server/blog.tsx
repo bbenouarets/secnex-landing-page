@@ -1,7 +1,5 @@
 "use server";
 
-import React from "react";
-
 import { type BlogPost } from "@/app/blog/[id]/page";
 
 const examplePosts: BlogPost[] = [];
