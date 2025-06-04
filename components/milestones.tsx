@@ -32,7 +32,7 @@ export const Milestones = ({ milestones }: MilestoneProps) => {
 				</span>
 			</h1>
 			<div className="relative flex flex-col gap-10">
-				<div className="absolute left-10 top-0 bottom-0 w-1 bg-gradient-to-b from-purple-400 via-cyan-400 to-pink-400 animate-pulse"></div>
+				<div className="absolute left-10 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 via-cyan-400 to-pink-400 animate-pulse"></div>
 
 				{lastCompleted && (
 					<div className="flex items-center space-x-4 bg-black p-4 rounded-lg backdrop-blur-sm border border-zinc-800">

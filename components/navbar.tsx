@@ -46,7 +46,7 @@ export const Navbar = () => {
 
 						<Button
 							size="lg"
-							className="relative inline-flex items-center justify-center overflow-hidden font-medium group p-[3px] rounded-lg bg-gradient-to-br from-purple-600 to-cyan-500 border-none focus:ring-4 focus:outline-none focus:ring-cyan-800"
+							className="relative inline-flex items-center justify-center overflow-hidden font-medium group p-[1px] rounded-md bg-gradient-to-br from-purple-600 to-cyan-500 border-none focus:ring-4 focus:outline-none focus:ring-cyan-800"
 							asChild
 						>
 							<Link href="https://discord.gg/BXkY4Yt5TW">

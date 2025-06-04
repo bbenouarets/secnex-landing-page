@@ -75,7 +75,7 @@ export default function Home() {
 											<Image
 												src="/notion_backup.png"
 												alt="Notion Backup Solution"
-												className="rounded-lg border-5 border-zinc-900 relative z-10"
+												className="rounded-lg border-2 border-zinc-900 relative z-10"
 												width={1000}
 												height={300}
 												style={{ width: "auto", height: "auto" }}
@@ -105,7 +105,7 @@ export default function Home() {
 											<Image
 												src="/teams_webhook_finder.png"
 												alt="Teams Webhook Finder"
-												className="rounded-lg border-5 border-zinc-900 relative z-10"
+												className="rounded-lg border-2 border-zinc-900 relative z-10"
 												width={1000}
 												height={300}
 												style={{ width: "auto", height: "auto" }}
