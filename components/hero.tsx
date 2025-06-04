@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { AnimatedBlurBall } from "@/components/animation";
 import { Button } from "@/components/ui/button";
+// import { Input } from "@/components/ui/input";
 
 import {
 	IconBrandInstagram,
@@ -27,7 +28,7 @@ export const HeroSection = () => {
 						<span className="block text-white text-4xl sm:text-5xl md:text-6xl font-bold">
 							Something
 						</span>
-						<span className="block bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent text-5xl sm:text-6xl md:text-7xl font-extrabold">
+						<span className="block bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent text-5xl sm:text-6xl md:text-7xl font-extrabold pb-1">
 							Revolutionary
 						</span>
 					</h1>
