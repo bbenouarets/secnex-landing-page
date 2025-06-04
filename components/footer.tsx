@@ -67,20 +67,20 @@ export const Footer = () => {
 							</li>
 							<li>
 								<Link
-									href="#"
+									href="/blog"
 									className="text-gray-400 hover:text-white transition-colors"
 								>
-									Contact
+									Blog
 								</Link>
 							</li>
-							<li>
+							{/* <li>
 								<Link
 									href="#"
 									className="text-gray-400 hover:text-white transition-colors"
 								>
 									Privacy
 								</Link>
-							</li>
+							</li> */}
 						</ul>
 					</div>
 
