@@ -4,6 +4,7 @@ import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "@/lib/notion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Skeleton } from "@/components/ui/skeleton";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
@@ -34,7 +35,7 @@ export default async function BlogPage() {
 							<Link
 								href={`/blog/${post.id}`}
 								key={post.id}
-								className="group flex flex-col w-full cursor-pointer hover:bg-zinc-900/50 transition-colors space-y-4 relative overflow-hidden"
+								className="group flex flex-col w-full cursor-pointer space-y-4 relative overflow-hidden"
 							>
 								<div className="flex flex-col w-full relative rounded-lg overflow-hidden border border-zinc-800">
 									<div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10" />
@@ -52,8 +53,8 @@ export default async function BlogPage() {
 										<Image
 											src={blogPost.cover?.file?.url || ""}
 											alt={blogPost.properties.Name.title[0]?.plain_text}
-											width={1000}
-											height={1000}
+											width={890}
+											height={500}
 											className="object-cover"
 										/>
 									</div>

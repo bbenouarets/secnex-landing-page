@@ -80,13 +80,6 @@ export async function getBlogPosts(startCursor?: string) {
 			start_cursor: startCursor,
 		});
 
-		console.log(
-			(response.results[0] as BlogPost)?.properties.Tags.multi_select
-		);
-		console.log(response.results[0] as BlogPost);
-		console.log((response.results[0] as BlogPost)?.cover);
-		console.log((response.results[0] as BlogPost)?.properties);
-
 		return response;
 	} catch (error) {
 		console.error("Fehler beim Abrufen der Blog-Posts:", error);

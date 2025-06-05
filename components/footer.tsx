@@ -85,7 +85,45 @@ export const Footer = () => {
 							</li> */}
 						</ul>
 					</div>
-
+					<div>
+						<h3 className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent text-lg pb-2">
+							Connect
+						</h3>
+						<ul className="space-y-2 text-sm">
+							<li>
+								<Link
+									href="https://github.com/secnex"
+									className="text-gray-400 hover:text-white transition-colors"
+								>
+									GitHub
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="https://instagram.com/secnex.io"
+									className="text-gray-400 hover:text-white transition-colors"
+								>
+									Instagram
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="https://x.com/secnex_io"
+									className="text-gray-400 hover:text-white transition-colors"
+								>
+									X
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="https://discord.gg/BXkY4Yt5TW"
+									className="text-gray-400 hover:text-white transition-colors"
+								>
+									Discord
+								</Link>
+							</li>
+						</ul>
+					</div>
 					<div>
 						<h3 className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent text-lg pb-2">
 							Connect

@@ -7,6 +7,7 @@ import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
 import { BlogAuthor } from "@/components/blog/author";
 import { PostContent } from "@/components/blog/post-content";
+import { Skeleton } from "@/components/ui/skeleton";
 
 import {
 	IconArrowLeft,
@@ -83,13 +84,17 @@ export default async function BlogPost({
 				</div>
 				<article className="flex flex-col space-y-6 border border-zinc-800 rounded-lg">
 					<div className="bg-zinc-900 rounded-t-lg overflow-hidden">
-						<Image
-							src={cover || ""}
-							alt={post.properties.Name.title[0]?.plain_text}
-							width={1000}
-							height={1000}
-							className="object-cover"
-						/>
+						{cover ? (
+							<Image
+								src={cover}
+								alt={post.properties.Name.title[0]?.plain_text}
+								width={890}
+								height={500}
+								className="object-cover"
+							/>
+						) : (
+							<Skeleton className="w-full h-48" />
+						)}
 					</div>
 					<div className="flex flex-col space-y-6 px-6 py-3">
 						<div className="flex flex-row gap-2">
