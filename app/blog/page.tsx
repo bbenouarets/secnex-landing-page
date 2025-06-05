@@ -8,6 +8,16 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
+import {
+	Pagination,
+	PaginationContent,
+	PaginationEllipsis,
+	PaginationItem,
+	PaginationLink,
+	PaginationNext,
+	PaginationPrevious,
+} from "@/components/ui/pagination";
+import { cn } from "@/lib/utils";
 
 export const metadata: Metadata = {
 	title: "Blog | SecNex",
@@ -17,8 +27,21 @@ export const metadata: Metadata = {
 // Statische Generierung mit Revalidierung alle 24 Stunden
 export const revalidate = 86400;
 
-export default async function BlogPage() {
-	const response = await getBlogPosts();
+const POSTS_PER_PAGE = 8;
+
+export default async function BlogPage({
+	searchParams,
+}: {
+	searchParams: Promise<{ page?: string }>;
+}) {
+	const params = await searchParams;
+	const currentPage = Number(params.page) || 1;
+	const startCursor =
+		currentPage > 1 ? String((currentPage - 1) * POSTS_PER_PAGE) : undefined;
+	const response = await getBlogPosts(startCursor);
+
+	const totalPosts = response.results.length;
+	const totalPages = Math.ceil(totalPosts / POSTS_PER_PAGE);
 
 	return (
 		<div className="flex flex-col min-h-screen">
@@ -29,7 +52,7 @@ export default async function BlogPage() {
 				</h1>
 
 				<div className="grid grid-cols-1 md:grid-cols-2 gap-10 w-full">
-					{response.results.map((post) => {
+					{response.results.slice(0, POSTS_PER_PAGE).map((post) => {
 						const blogPost = post as BlogPost;
 						return (
 							<Link
@@ -84,6 +107,55 @@ export default async function BlogPage() {
 						);
 					})}
 				</div>
+
+				{totalPages > 1 && (
+					<Pagination className="mt-8">
+						<PaginationContent>
+							<PaginationItem>
+								<PaginationPrevious
+									href={currentPage > 1 ? `?page=${currentPage - 1}` : "#"}
+									className={cn(
+										"text-zinc-50",
+										currentPage <= 1 ? "pointer-events-none opacity-50" : ""
+									)}
+								/>
+							</PaginationItem>
+
+							{Array.from({ length: totalPages }, (_, i) => i + 1).map(
+								(page) => (
+									<PaginationItem key={page}>
+										<PaginationLink
+											href={`?page=${page}`}
+											isActive={currentPage === page}
+											className={cn(
+												"text-zinc-50 bg-black border border-black hover:bg-zinc-900 hover:text-white",
+												currentPage === page
+													? "bg-zinc-900 border-zinc-800"
+													: ""
+											)}
+										>
+											{page}
+										</PaginationLink>
+									</PaginationItem>
+								)
+							)}
+
+							<PaginationItem>
+								<PaginationNext
+									href={
+										currentPage < totalPages ? `?page=${currentPage + 1}` : "#"
+									}
+									className={cn(
+										"text-zinc-50",
+										currentPage >= totalPages
+											? "pointer-events-none opacity-50"
+											: ""
+									)}
+								/>
+							</PaginationItem>
+						</PaginationContent>
+					</Pagination>
+				)}
 			</div>
 			<Footer />
 		</div>

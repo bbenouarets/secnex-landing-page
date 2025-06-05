@@ -69,6 +69,11 @@ export type BlogPost = PageObjectResponse & {
 			number: number | null;
 			id: string;
 		};
+		Published: {
+			type: "checkbox";
+			checkbox: boolean;
+			id: string;
+		};
 	};
 };
 
@@ -78,6 +83,12 @@ export async function getBlogPosts(startCursor?: string) {
 		const response = await notion.databases.query({
 			database_id: databaseId,
 			start_cursor: startCursor,
+			filter: {
+				property: "Published",
+				checkbox: {
+					equals: true,
+				},
+			},
 		});
 
 		return response;
@@ -98,6 +109,11 @@ export async function getBlogPostBySlug(slug: string): Promise<
 			page_id: slug,
 		})) as BlogPost;
 
+		// Überprüfe, ob der Beitrag veröffentlicht ist
+		if (!response.properties.Published.checkbox) {
+			return null;
+		}
+
 		const blocks = await notion.blocks.children.list({
 			block_id: slug,
 		});
@@ -117,6 +133,12 @@ export async function getDatabase() {
 		const response = await notion.databases.query({
 			database_id: databaseId,
 			page_size: 100,
+			filter: {
+				property: "Published",
+				checkbox: {
+					equals: true,
+				},
+			},
 			sorts: [
 				{
 					property: "Date",
