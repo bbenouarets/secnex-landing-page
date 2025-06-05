@@ -56,23 +56,23 @@ export const Footer = () => {
 					</div>
 					<div>
 						<h3 className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent text-lg pb-2">
-							More
+							Resources
 						</h3>
 						<ul className="space-y-2 text-sm">
-							<li>
-								<Link
-									href="https://docs.secnex.io"
-									className="text-gray-400 hover:text-white transition-colors"
-								>
-									Documentation
-								</Link>
-							</li>
 							<li>
 								<Link
 									href="/blog"
 									className="text-gray-400 hover:text-white transition-colors"
 								>
 									Blog
+								</Link>
+							</li>
+							<li>
+								<Link
+									href="https://docs.secnex.io"
+									className="text-gray-400 hover:text-white transition-colors"
+								>
+									Documentation
 								</Link>
 							</li>
 							{/* <li>

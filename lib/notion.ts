@@ -2,6 +2,8 @@ import {
 	Client,
 	PageObjectResponse,
 	RichTextItemResponse,
+	BlockObjectResponse,
+	PartialBlockObjectResponse,
 } from "@notionhq/client";
 
 // Überprüfe Umgebungsvariablen nur im Server-Kontext
@@ -92,12 +94,27 @@ export async function getBlogPosts(startCursor?: string) {
 	}
 }
 
-export async function getBlogPostBySlug(id: string): Promise<BlogPost | null> {
+export async function getBlogPostBySlug(slug: string): Promise<
+	| (BlogPost & {
+			blocks: (BlockObjectResponse | PartialBlockObjectResponse)[];
+	  })
+	| null
+> {
 	try {
-		const response = await notion.pages.retrieve({ page_id: id });
-		return response as BlogPost;
+		const response = (await notion.pages.retrieve({
+			page_id: slug,
+		})) as BlogPost;
+
+		const blocks = await notion.blocks.children.list({
+			block_id: slug,
+		});
+
+		return {
+			...response,
+			blocks: blocks.results,
+		};
 	} catch (error) {
-		console.error("Fehler beim Abrufen des Blog-Posts:", error);
+		console.error("Error fetching blog post:", error);
 		return null;
 	}
 }

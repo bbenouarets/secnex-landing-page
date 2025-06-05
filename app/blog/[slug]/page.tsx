@@ -6,6 +6,7 @@ import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
 import { BlogAuthor } from "@/components/blog/author";
+import { PostContent } from "@/components/blog/post-content";
 
 import {
 	IconArrowLeft,
@@ -124,9 +125,8 @@ export default async function BlogPost({
 						))}
 					</div>
 
-					<div className="prose prose-lg max-w-none prose-invert">
-						{/* Hier müssen wir den Notion-Block-Inhalt rendern */}
-						{/* Dies erfordert eine zusätzliche Implementierung */}
+					<div className="prose prose-lg max-w-none prose-invert px-6 pb-6">
+						<PostContent blocks={post.blocks} />
 					</div>
 				</article>
 			</div>
