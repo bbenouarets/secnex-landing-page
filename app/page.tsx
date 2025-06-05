@@ -4,7 +4,9 @@ import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
+import { Button } from "@/components/ui/button";
 import { Milestones, type Milestone } from "@/components/milestones";
+import { LoginMockup } from "@/components/login-mockup";
 
 const milestones: Milestone[] = [
 	{
@@ -58,21 +60,34 @@ export default function Home() {
 			<main className="w-full">
 				<HeroSection />
 				<div className="flex flex-col p-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-20">
-					<div className="flex flex-col gap-4">
-						<h1 className="">
-							<span className="block text-white text-xl sm:text-2xl md:text-3xl font-bold">
-								Secure Identidy
-							</span>
-							<span className="block bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl font-extrabold pb-1">
-								Made Simple
-							</span>
-						</h1>
-						<div className="flex flex-col gap-4">
-							<p className="text-white text-lg">
-								A modern identity provider solution with seamless
-								authentication, enterprise-grade security, and a delightful user
-								experience.
-							</p>
+					<div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+						<div className="flex flex-col md:col-span-2 lg:col-span-3 space-y-5 justify-center">
+							<h1 className="">
+								<span className="block text-white text-xl sm:text-2xl md:text-3xl font-bold">
+									Secure Identidy
+								</span>
+								<span className="block bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl font-extrabold pb-1">
+									Made Simple
+								</span>
+							</h1>
+							<div className="flex flex-col gap-4">
+								<p className="text-white text-lg">
+									A modern identity provider solution with seamless
+									authentication, enterprise-grade security, and a delightful
+									user experience.
+								</p>
+								<div className="">
+									<Button
+										className="bg-zinc-900/50 text-white rounded-lg h-12 backdrop-blur-sm"
+										size="lg"
+									>
+										Get Started
+									</Button>
+								</div>
+							</div>
+						</div>
+						<div className="flex flex-col items-center justify-center w-full col-span-2 lg:col-span-1">
+							<LoginMockup />
 						</div>
 					</div>
 					<Milestones milestones={milestones} />
