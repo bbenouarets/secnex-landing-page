@@ -59,6 +59,23 @@ export default function Home() {
 			<main className="w-full">
 				<HeroSection />
 				<div className="flex flex-col p-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-20">
+					<div className="flex flex-col gap-4">
+						<h1 className="">
+							<span className="block text-white text-xl sm:text-2xl md:text-3xl font-bold">
+								Secure Identidy
+							</span>
+							<span className="block bg-gradient-to-r from-purple-400 via-cyan-400 to-pink-400 bg-clip-text text-transparent text-3xl sm:text-4xl md:text-5xl font-extrabold pb-1">
+								Made Simple
+							</span>
+						</h1>
+						<div className="flex flex-col gap-4">
+							<p className="text-white text-lg">
+								A modern identity provider solution with seamless
+								authentication, enterprise-grade security, and a delightful user
+								experience.
+							</p>
+						</div>
+					</div>
 					<Milestones milestones={milestones} />
 					<div className="flex flex-col gap-4">
 						<h1 className="">
