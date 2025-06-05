@@ -16,12 +16,7 @@ export const metadata: Metadata = {
 
 export const revalidate = 3600; // Revalidiere jede Stunde
 
-export default async function BlogPage({
-	searchParams,
-}: {
-	searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-	const params = await searchParams;
+export default async function BlogPage() {
 	const response = await getBlogPosts();
 
 	return (
