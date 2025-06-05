@@ -7,7 +7,6 @@ import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
-import { IconClock } from "@tabler/icons-react";
 
 export const metadata: Metadata = {
 	title: "Blog | SecNex",

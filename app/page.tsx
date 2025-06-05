@@ -4,7 +4,6 @@ import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import { Button } from "@/components/ui/button";
 import { Milestones, type Milestone } from "@/components/milestones";
 
 const milestones: Milestone[] = [
