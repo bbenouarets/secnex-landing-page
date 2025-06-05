@@ -108,7 +108,7 @@ export default function Blog() {
 				{examplePosts.length === 0 && (
 					<div className="flex flex-col items-center justify-center h-full">
 						<div className="flex border border-zinc-800 rounded-lg p-4 w-full">
-							<p className="text-white text-center">
+							<p className="text-zinc-400 text-center font-mono">
 								We are working on it. Stay tuned!
 							</p>
 						</div>

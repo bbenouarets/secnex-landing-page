@@ -67,7 +67,10 @@ export default function Home() {
 							</span>
 						</h1>
 						<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-							<div className="flex flex-col space-y-4">
+							<Link
+								href="https://github.com/secnex/notion-backup"
+								className="flex flex-col space-y-4"
+							>
 								<div className="flex flex-col space-y-2">
 									<div className="flex flex-col w-full items-center">
 										<div className="relative w-full flex items-center justify-center">
@@ -87,17 +90,11 @@ export default function Home() {
 										<p>Backup and restore your Notion workspace</p>
 									</div>
 								</div>
-								<Button
-									asChild
-									size="lg"
-									className="bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-								>
-									<Link href="https://github.com/secnex/notion-backup">
-										Check out
-									</Link>
-								</Button>
-							</div>
-							<div className="flex flex-col space-y-4">
+							</Link>
+							<Link
+								href="https://github.com/secnex/teams-webhook-finder"
+								className="flex flex-col space-y-4"
+							>
 								<div className="flex flex-col space-y-2">
 									<div className="flex flex-col w-full items-center">
 										<div className="relative w-full flex items-center justify-center">
@@ -117,16 +114,7 @@ export default function Home() {
 										<p>Identify teams which use the webhook feature</p>
 									</div>
 								</div>
-								<Button
-									asChild
-									size="lg"
-									className="bg-gradient-to-r from-purple-600 to-pink-600 text-white"
-								>
-									<Link href="https://github.com/secnex/teams-webhook-finder">
-										Check out
-									</Link>
-								</Button>
-							</div>
+							</Link>
 						</div>
 					</div>
 				</div>

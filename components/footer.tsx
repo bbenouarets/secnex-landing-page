@@ -15,12 +15,15 @@ export const Footer = () => {
 			<div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="grid grid-cols-2 md:grid-cols-3 gap-8 pb-8">
 					<div className="col-span-2 md:col-span-1">
-						<div className="flex items-center">
+						<Link
+							href="/"
+							className="flex items-center"
+						>
 							<Shield className="h-8 w-8 text-purple-500" />
 							<span className="ml-2 text-xl font-bold bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent">
 								SecNex
 							</span>
-						</div>
+						</Link>
 						<p className="mt-2 text-sm text-gray-400 max-w-xs">
 							The future of technology is coming soon.
 						</p>
@@ -51,7 +54,6 @@ export const Footer = () => {
 							</Link>
 						</div>
 					</div>
-
 					<div>
 						<h3 className="bg-gradient-to-r from-purple-400 to-cyan-400 bg-clip-text text-transparent text-lg pb-2">
 							More
