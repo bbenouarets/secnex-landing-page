@@ -10,11 +10,11 @@ import { BlogTags, getTagColor } from "@/components/blog/tags";
 
 export const metadata: Metadata = {
 	title: "Blog | SecNex",
-	description:
-		"Lesen Sie unsere neuesten Artikel über Cybersicherheit und Technologie.",
+	description: "Read our latest articles about cybersecurity and technology.",
 };
 
-export const revalidate = 3600; // Revalidiere jede Stunde
+// Statische Generierung mit Revalidierung alle 24 Stunden
+export const revalidate = 86400;
 
 export default async function BlogPage() {
 	const response = await getBlogPosts();
@@ -34,10 +34,11 @@ export default async function BlogPage() {
 							<Link
 								href={`/blog/${post.id}`}
 								key={post.id}
-								className="group flex flex-col p-4 w-full cursor-pointer hover:bg-zinc-900/50 transition-colors space-y-4 relative overflow-hidden border border-zinc-800 rounded-lg"
+								className="group flex flex-col p-4 w-full cursor-pointer hover:bg-zinc-900/50 transition-colors space-y-4 relative overflow-hidden"
 							>
-								<div className="flex flex-col w-full relative rounded-lg overflow-hidden">
-									<div className="absolute top-1 right-1 z-10">
+								<div className="flex flex-col w-full relative rounded-lg overflow-hidden border border-zinc-800">
+									<div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px] -z-10" />
+									<div className="absolute top-4 right-4 z-10">
 										<div className="*:data-[slot=avatar]:ring-zinc-500 flex -space-x-2 *:data-[slot=avatar]:ring *:data-[slot=avatar]:grayscale">
 											{blogPost.properties.Author.people.map((author) => (
 												<Avatar key={author.id}>
@@ -47,7 +48,7 @@ export default async function BlogPage() {
 											))}
 										</div>
 									</div>
-									<div className="flex flex-row gap-2 absolute bottom-0 left-0 z-10">
+									<div className="flex flex-row gap-2 absolute bottom-4 left-4 z-10">
 										{blogPost.properties.Tags.multi_select.map((tag) => {
 											const colors = getTagColor(tag.color);
 											return (

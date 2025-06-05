@@ -1,4 +1,4 @@
-import { getBlogPostBySlug } from "@/lib/notion";
+import { getBlogPostBySlug, getBlogPosts } from "@/lib/notion";
 import type { BlogPost } from "@/lib/notion";
 import { Metadata } from "next";
 import { notFound } from "next/navigation";
@@ -15,15 +15,21 @@ import {
 import Image from "next/image";
 import Link from "next/link";
 
-export const revalidate = 3600; // Revalidiere jede Stunde
+export const revalidate = 3600;
+
+export async function generateStaticParams() {
+	const posts = await getBlogPosts();
+	return posts.results.map((post) => ({
+		slug: post.id,
+	}));
+}
 
 export async function generateMetadata({
 	params,
 }: {
-	params: Promise<{ slug: string }>;
+	params: { slug: string };
 }): Promise<Metadata> {
-	const { slug } = await params;
-	const post = await getBlogPostBySlug(slug);
+	const post = await getBlogPostBySlug(params.slug);
 
 	if (!post) {
 		return {
@@ -39,10 +45,9 @@ export async function generateMetadata({
 export default async function BlogPost({
 	params,
 }: {
-	params: Promise<{ slug: string }>;
+	params: { slug: string };
 }) {
-	const { slug } = await params;
-	const post = await getBlogPostBySlug(slug);
+	const post = await getBlogPostBySlug(params.slug);
 
 	if (!post) {
 		notFound();
@@ -106,17 +111,13 @@ export default async function BlogPost({
 								<span className="text-sm">{readingTime} min</span>
 							</div>
 						</div>
-						<div className="flex flex-col space-y-4">
-							<h2 className="text-zinc-300 text-md font-bold">Authors</h2>
-							<div className="flex flex-row gap-2 items-center">
-								{authors.people.map((author) => (
-									<BlogAuthor
-										key={author.id}
-										author={author}
-									/>
-								))}
-							</div>
-						</div>
+
+						{authors.people.map((author) => (
+							<BlogAuthor
+								key={author.id}
+								author={author}
+							/>
+						))}
 					</div>
 
 					<div className="prose prose-lg max-w-none prose-invert">
