@@ -4,14 +4,12 @@ import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "@/lib/notion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Skeleton } from "@/components/ui/skeleton";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
 import {
 	Pagination,
 	PaginationContent,
-	PaginationEllipsis,
 	PaginationItem,
 	PaginationLink,
 	PaginationNext,
@@ -24,8 +22,7 @@ export const metadata: Metadata = {
 	description: "Read our latest articles about cybersecurity and technology.",
 };
 
-// Statische Generierung mit Revalidierung alle 24 Stunden
-export const revalidate = 86400;
+export const revalidate = 1800;
 
 const POSTS_PER_PAGE = 8;
 
