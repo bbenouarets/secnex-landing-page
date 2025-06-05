@@ -33,12 +33,14 @@ export async function generateMetadata({
 
 	if (!post) {
 		return {
-			title: "Beitrag nicht gefunden | SecNex",
+			title: "Post not found | SecNex",
+			description: "The post you are looking for does not exist.",
 		};
 	}
 
 	return {
 		title: `${post.properties.Name.title[0]?.plain_text} | SecNex Blog`,
+		description: post.properties.Description.rich_text[0]?.plain_text,
 	};
 }
 
