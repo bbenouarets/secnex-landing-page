@@ -5,6 +5,7 @@ import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
 import { Milestones, type Milestone } from "@/components/milestones";
+import { TechStack } from "@/components/techstack";
 import { LoginMockup } from "@/components/login-mockup";
 // import { NewsletterSection } from "@/components/newsletter";
 
@@ -90,6 +91,7 @@ export default function Home() {
 							<LoginMockup />
 						</div>
 					</div>
+					<TechStack />
 					<Milestones milestones={milestones} />
 					<div className="flex flex-col gap-4">
 						<h1 className="">
