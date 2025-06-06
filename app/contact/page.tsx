@@ -7,7 +7,7 @@ import Link from "next/link";
 import { Navbar } from "@/components/navbar";
 import { Footer } from "@/components/footer";
 
-import { ContactForm } from "@/components/contact-form";
+// import { ContactForm } from "@/components/contact-form";
 
 import {
 	IconBrandGithub,

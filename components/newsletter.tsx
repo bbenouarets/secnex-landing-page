@@ -46,7 +46,7 @@ export const NewsletterSection = () => {
 							className="max-w-md mx-auto"
 						>
 							<div className="relative">
-								<input
+								<Input
 									type="email"
 									value={email}
 									onChange={(e) => setEmail(e.target.value)}
@@ -54,13 +54,13 @@ export const NewsletterSection = () => {
 									required
 									className="w-full px-6 py-4 bg-black/50 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white pr-12"
 								/>
-								<button
+								<Button
 									type="submit"
 									disabled={isLoading}
 									className="absolute right-2 top-1/2 -translate-y-1/2 inline-flex items-center justify-center p-2 rounded-lg bg-gradient-to-r from-purple-600 to-pink-600 text-white hover:shadow-lg hover:shadow-purple-500/20 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
 								>
 									<Send className="w-5 h-5" />
-								</button>
+								</Button>
 							</div>
 						</form>
 

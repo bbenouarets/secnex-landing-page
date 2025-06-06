@@ -4,10 +4,9 @@ import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import { Button } from "@/components/ui/button";
 import { Milestones, type Milestone } from "@/components/milestones";
 import { LoginMockup } from "@/components/login-mockup";
-import { NewsletterSection } from "@/components/newsletter";
+// import { NewsletterSection } from "@/components/newsletter";
 
 const milestones: Milestone[] = [
 	{
