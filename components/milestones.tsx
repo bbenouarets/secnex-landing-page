@@ -4,13 +4,7 @@ import { getMilestonesFromNotion } from "@/lib/notion";
 export type Milestone = {
 	title: string;
 	description: string;
-	duedate: Date;
-	finishdate?: Date;
 	status: "In Progress" | "Done" | "Not Started";
-};
-
-export type MilestoneProps = {
-	milestones: Milestone[];
 };
 
 export const Milestones = async () => {

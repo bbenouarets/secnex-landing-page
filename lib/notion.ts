@@ -174,8 +174,8 @@ export async function getDatabase() {
 			],
 		});
 
-		return response.results.map((page: any) => {
-			const post = page as BlogPost;
+		return response.results.map((page: BlogPost) => {
+			const post = page;
 			const cover = post.cover?.type === "file" ? post.cover.file.url : null;
 
 			return {
@@ -211,9 +211,8 @@ export async function getMilestonesFromNotion() {
 			},
 		});
 
-		return response.results.map((page: any) => {
-			const m = page as NotionMilestone;
-			console.log(m.properties["Due Date"]);
+		return response.results.map((page: NotionMilestone) => {
+			const m = page;
 			return {
 				title: m.properties.Name.title[0]?.plain_text ?? "",
 				description: m.properties.Description.rich_text[0]?.plain_text ?? "",
