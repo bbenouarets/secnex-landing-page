@@ -28,7 +28,7 @@ export default function ContactPage() {
 					Have you any questions or feedback? We are happy to hear from you.
 				</p>
 				<div className="border border-zinc-800 rounded-lg p-4 text-zinc-400 space-y-4">
-					<p className="text-lg">
+					<p className="md:text-lg">
 						We are not ready for contact form yet. Please use the email{" "}
 						<Link
 							href="mailto:support@secnex.io"

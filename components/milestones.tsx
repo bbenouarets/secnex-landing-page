@@ -1,28 +1,33 @@
 import { IconCircle, IconCircleCheck, IconLoader3 } from "@tabler/icons-react";
+import { getMilestonesFromNotion } from "@/lib/notion";
 
 export type Milestone = {
 	title: string;
 	description: string;
 	duedate: Date;
 	finishdate?: Date;
-	status: "in-progress" | "completed" | "not-started";
+	status: "In Progress" | "Done" | "Not Started";
 };
 
 export type MilestoneProps = {
 	milestones: Milestone[];
 };
 
-export const Milestones = ({ milestones }: MilestoneProps) => {
-	// Filtere die Meilensteine
+export const Milestones = async () => {
+	const milestones = await getMilestonesFromNotion();
 	const completedMilestones = milestones.filter(
-		(m) => m.status === "completed"
+		(m: Milestone) => m.status.toLowerCase() === "done"
 	);
 	const lastCompleted = completedMilestones[completedMilestones.length - 1];
-	const currentMilestone = milestones.find((m) => m.status === "in-progress");
+	const currentMilestone = milestones.find(
+		(m: Milestone) => m.status.toLowerCase() === "in progress"
+	);
 	const upcomingMilestones = milestones
-		.filter((m) => m.status === "not-started")
+		.filter((m: Milestone) => m.status.toLowerCase() === "not started")
 		.slice(0, 2);
-	const nextUpcoming = milestones.filter((m) => m.status === "not-started")[2];
+	const nextUpcoming = milestones.filter(
+		(m: Milestone) => m.status.toLowerCase() === "not started"
+	)[2];
 
 	return (
 		<div className="flex flex-col gap-4">
@@ -33,7 +38,6 @@ export const Milestones = ({ milestones }: MilestoneProps) => {
 			</h1>
 			<div className="relative flex flex-col gap-10">
 				<div className="absolute left-10 top-0 bottom-0 w-0.5 bg-gradient-to-b from-purple-400 via-cyan-400 to-pink-400 animate-pulse"></div>
-
 				{lastCompleted && (
 					<div className="flex items-center space-x-4 bg-black p-4 rounded-lg backdrop-blur-sm border border-zinc-800">
 						<div className="flex items-center justify-center w-20 h-10">
@@ -72,7 +76,7 @@ export const Milestones = ({ milestones }: MilestoneProps) => {
 					</div>
 				)}
 
-				{upcomingMilestones.map((milestone) => (
+				{upcomingMilestones.map((milestone: Milestone) => (
 					<div
 						key={milestone.title}
 						className="flex items-center space-x-4 bg-black p-4 rounded-lg backdrop-blur-sm border border-zinc-800"

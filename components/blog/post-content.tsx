@@ -2,6 +2,10 @@ import {
 	BlockObjectResponse,
 	PartialBlockObjectResponse,
 } from "@notionhq/client/build/src/api-endpoints";
+
+import Image from "next/image";
+import Link from "next/link";
+
 import { cn } from "@/lib/utils";
 
 type PostContentProps = {
@@ -147,18 +151,19 @@ export const PostContent = ({ blocks }: PostContentProps) => {
 											text.annotations.italic && "italic",
 											text.annotations.strikethrough && "line-through",
 											text.annotations.underline && "underline",
-											text.annotations.code && "bg-zinc-800 px-1 rounded"
+											text.annotations.code &&
+												"bg-zinc-800 px-1 rounded font-mono"
 										)}
 									>
 										{text.href ? (
-											<a
+											<Link
 												href={text.href}
 												target="_blank"
 												rel="noopener noreferrer"
 												className="text-blue-500 hover:text-blue-400"
 											>
 												{text.plain_text}
-											</a>
+											</Link>
 										) : (
 											text.plain_text
 										)}
@@ -255,10 +260,12 @@ export const PostContent = ({ blocks }: PostContentProps) => {
 								key={block.id}
 								className="my-4"
 							>
-								<img
+								<Image
 									src={imageUrl}
 									alt={block.image.caption?.[0]?.plain_text || "Blog image"}
 									className="rounded-lg max-w-full h-auto"
+									width={1000}
+									height={1000}
 								/>
 								{block.image.caption && (
 									<p className="text-zinc-500 text-sm mt-2">

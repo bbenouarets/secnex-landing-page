@@ -25,6 +25,9 @@ export const notion = new Client({
 // Stelle sicher, dass databaseId immer definiert ist
 export const databaseId = process.env.NOTION_DATABASE_ID || "";
 
+export const milestonesDatabaseId =
+	process.env.NOTION_MILESTONES_DATABASE_ID || "";
+
 type FileObject = {
 	url: string;
 	expiry_time: string;
@@ -72,6 +75,30 @@ export type BlogPost = PageObjectResponse & {
 		Published: {
 			type: "checkbox";
 			checkbox: boolean;
+			id: string;
+		};
+	};
+};
+
+export type NotionMilestone = PageObjectResponse & {
+	properties: {
+		Title: {
+			type: "title";
+			title: RichTextItemResponse[];
+			id: string;
+		};
+		Description: {
+			type: "rich_text";
+			rich_text: RichTextItemResponse[];
+			id: string;
+		};
+		Status: {
+			type: "status";
+			status: {
+				id: string;
+				name: string;
+				color: string;
+			};
 			id: string;
 		};
 	};
@@ -147,7 +174,7 @@ export async function getDatabase() {
 			],
 		});
 
-		return response.results.map((page) => {
+		return response.results.map((page: any) => {
 			const post = page as BlogPost;
 			const cover = post.cover?.type === "file" ? post.cover.file.url : null;
 
@@ -161,6 +188,27 @@ export async function getDatabase() {
 		});
 	} catch (error) {
 		console.error("Fehler beim Abrufen der Blog-Posts:", error);
+		return [];
+	}
+}
+
+export async function getMilestonesFromNotion() {
+	try {
+		const response = await notion.databases.query({
+			database_id: milestonesDatabaseId,
+			page_size: 100,
+		});
+
+		return response.results.map((page: any) => {
+			const m = page as NotionMilestone;
+			return {
+				title: m.properties.Name.title[0]?.plain_text ?? "",
+				description: m.properties.Description.rich_text[0]?.plain_text ?? "",
+				status: m.properties.Status.status.name,
+			};
+		});
+	} catch (error) {
+		console.error("Fehler beim Abrufen der Milestones:", error);
 		return [];
 	}
 }
