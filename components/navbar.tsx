@@ -65,6 +65,18 @@ export const Navbar = () => {
 									Blog
 								</Link>
 							</Button>
+							<Button
+								variant="ghost"
+								className="hover:bg-zinc-800/50"
+								asChild
+							>
+								<Link
+									href="/contact"
+									className="text-zinc-300 hover:text-white transition-colors"
+								>
+									Contact
+								</Link>
+							</Button>
 
 							<DropdownMenu>
 								<DropdownMenuTrigger asChild>
@@ -128,6 +140,13 @@ export const Navbar = () => {
 								onClick={() => setIsMobileMenuOpen(false)}
 							>
 								Blog
+							</Link>
+							<Link
+								href="/contact"
+								className="block px-3 py-2 rounded-md text-base font-medium text-zinc-300 hover:text-white hover:bg-zinc-800/50"
+								onClick={() => setIsMobileMenuOpen(false)}
+							>
+								Contact
 							</Link>
 							<Link
 								href="https://docs.secnex.io"

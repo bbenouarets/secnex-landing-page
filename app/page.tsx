@@ -7,6 +7,7 @@ import { Navbar } from "@/components/navbar";
 import { Button } from "@/components/ui/button";
 import { Milestones, type Milestone } from "@/components/milestones";
 import { LoginMockup } from "@/components/login-mockup";
+import { NewsletterSection } from "@/components/newsletter";
 
 const milestones: Milestone[] = [
 	{
@@ -60,7 +61,7 @@ export default function Home() {
 			<main className="w-full">
 				<HeroSection />
 				<div className="flex flex-col p-4 sm:px-6 lg:px-8 max-w-5xl mx-auto space-y-20">
-					<div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center">
+					<div className="grid grid-cols-1 md:grid-cols-4 gap-8 items-center py-10">
 						<div className="flex flex-col md:col-span-2 lg:col-span-3 space-y-5 justify-center">
 							<h1 className="">
 								<span className="block text-white text-xl sm:text-2xl md:text-3xl font-bold">
@@ -76,14 +77,14 @@ export default function Home() {
 									authentication, enterprise-grade security, and a delightful
 									user experience.
 								</p>
-								<div className="">
+								{/* <div className="">
 									<Button
 										className="bg-zinc-900/50 text-white rounded-lg h-12 backdrop-blur-sm"
 										size="lg"
 									>
 										Get Started
 									</Button>
-								</div>
+								</div> */}
 							</div>
 						</div>
 						<div className="flex flex-col items-center justify-center w-full col-span-2 lg:col-span-1">
@@ -148,6 +149,7 @@ export default function Home() {
 							</Link>
 						</div>
 					</div>
+					{/* <NewsletterSection /> */}
 				</div>
 			</main>
 			<Footer />
