@@ -197,10 +197,23 @@ export async function getMilestonesFromNotion() {
 		const response = await notion.databases.query({
 			database_id: milestonesDatabaseId,
 			page_size: 100,
+			sorts: [
+				{
+					property: "Due Date",
+					direction: "ascending",
+				},
+			],
+			filter: {
+				property: "Public",
+				checkbox: {
+					equals: true,
+				},
+			},
 		});
 
 		return response.results.map((page: any) => {
 			const m = page as NotionMilestone;
+			console.log(m.properties["Due Date"]);
 			return {
 				title: m.properties.Name.title[0]?.plain_text ?? "",
 				description: m.properties.Description.rich_text[0]?.plain_text ?? "",
