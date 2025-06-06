@@ -4,7 +4,7 @@ import Image from "next/image";
 import { Footer } from "@/components/footer";
 import { HeroSection } from "@/components/hero";
 import { Navbar } from "@/components/navbar";
-import { Milestones, type Milestone } from "@/components/milestones";
+import { Milestones } from "@/components/milestones";
 import { TechStack } from "@/components/techstack";
 import { LoginMockup } from "@/components/login-mockup";
 // import { NewsletterSection } from "@/components/newsletter";
