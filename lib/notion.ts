@@ -174,14 +174,15 @@ export async function getDatabase() {
 			],
 		});
 
-		return response.results.map((page: BlogPost) => {
-			const post = page;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		return response.results.map((page: any) => {
+			const post = page as BlogPost;
 			const cover = post.cover?.type === "file" ? post.cover.file.url : null;
 
 			return {
 				id: post.id,
-				title: post.properties.Name.title[0]?.plain_text || "Ohne Titel",
-				author: post.properties.Author.people[0]?.name || "Anonym",
+				title: post.properties.Name.title[0]?.plain_text || "No Title",
+				author: post.properties.Author.people[0]?.name || "Anonymous",
 				slug: post.id,
 				cover: cover,
 			};
@@ -189,6 +190,19 @@ export async function getDatabase() {
 	} catch (error) {
 		console.error("Fehler beim Abrufen der Blog-Posts:", error);
 		return [];
+	}
+}
+
+function mapStatus(status: string): "In Progress" | "Done" | "Not Started" {
+	switch (status.toLowerCase()) {
+		case "in progress":
+			return "In Progress";
+		case "done":
+			return "Done";
+		case "not started":
+			return "Not Started";
+		default:
+			return "Not Started";
 	}
 }
 
@@ -211,12 +225,23 @@ export async function getMilestonesFromNotion() {
 			},
 		});
 
-		return response.results.map((page: NotionMilestone) => {
-			const m = page;
+		// eslint-disable-next-line @typescript-eslint/no-explicit-any
+		return response.results.map((page: any) => {
+			const m = page as NotionMilestone;
 			return {
-				title: m.properties.Name.title[0]?.plain_text ?? "",
-				description: m.properties.Description.rich_text[0]?.plain_text ?? "",
-				status: m.properties.Status.status.name,
+				title:
+					m.properties.Name &&
+					m.properties.Name.type === "title" &&
+					m.properties.Name.title[0]?.plain_text
+						? m.properties.Name.title[0].plain_text
+						: "",
+				description:
+					m.properties.Description &&
+					m.properties.Description.type === "rich_text" &&
+					m.properties.Description.rich_text[0]?.plain_text
+						? m.properties.Description.rich_text[0].plain_text
+						: "",
+				status: mapStatus(m.properties.Status.status.name),
 			};
 		});
 	} catch (error) {
