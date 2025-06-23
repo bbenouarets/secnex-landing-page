@@ -8,7 +8,6 @@ import { AnimatedBeam } from "@/components/common/connection.motion";
 
 import {
 	IconUsersGroup,
-	IconBrandDiscord,
 	IconLock,
 	IconBinaryTree2,
 	IconChartHistogram,
