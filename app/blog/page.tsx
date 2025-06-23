@@ -4,8 +4,8 @@ import Link from "next/link";
 import Image from "next/image";
 import type { BlogPost } from "@/lib/notion";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { Navbar } from "@/components/navbar";
-import { Footer } from "@/components/footer";
+import { Navbar } from "@/components/common/navbar";
+import { Footer } from "@/components/common/footer";
 import { BlogTags, getTagColor } from "@/components/blog/tags";
 import {
 	Pagination,

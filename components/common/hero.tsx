@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { AnimatedBlurBall } from "@/components/animation";
+import { AnimatedBlurBall } from "@/components/common/animation";
 import { Button } from "@/components/ui/button";
 // import { Input } from "@/components/ui/input";
 

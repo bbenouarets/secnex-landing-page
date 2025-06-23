@@ -1,13 +1,14 @@
 import Link from "next/link";
 import Image from "next/image";
 
-import { Footer } from "@/components/footer";
-import { HeroSection } from "@/components/hero";
-import { Navbar } from "@/components/navbar";
-import { Milestones } from "@/components/milestones";
-import { TechStack } from "@/components/techstack";
-import { LoginMockup } from "@/components/login-mockup";
-// import { NewsletterSection } from "@/components/newsletter";
+import { Footer } from "@/components/common/footer";
+import { HeroSection } from "@/components/common/hero";
+import { Navbar } from "@/components/common/navbar";
+import { Milestones } from "@/components/common/milestones";
+import { TechStack } from "@/components/common/techstack";
+import { LoginMockup } from "@/components/common/login-mockup";
+import { ProjectConnection } from "@/components/common/project-connection";
+// import { NewsletterSection } from "@/components/common/newsletter";
 
 export default async function Home() {
 	return (
@@ -46,6 +47,7 @@ export default async function Home() {
 							<LoginMockup />
 						</div>
 					</div>
+					<ProjectConnection />
 					<TechStack />
 					<Milestones />
 					<div className="flex flex-col gap-4">
